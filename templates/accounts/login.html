@@ -1,0 +1,39 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">	
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'jquery/jquery.min.js' %}"></script>
+	<title>Base Doc</title>
+</head>
+
+<body>
+<div class="cont-special">
+	<div class="cont-col-special">
+	<div class="nav-cont-special">
+		<div class="logo-special">
+			<img src="{% static 'img/logo.jpeg' %}">
+		</div>
+		<div class="nav-center-special">
+			<a href="{% url 'accounts:student_signup' %}">Signup</a>
+		</div>
+	</div>
+	<div class="content-cont-special">
+		<form method="POST">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<legend class="border-bottom mb-4">Login</legend>
+				{{form | crispy}}
+			</fieldset>
+			<div class="form-group">
+				<button class="btn-outline-success btn-lg " type="submit">Login</button>
+			</div>
+		</form>
+	</div>
+	</div>
+</div>
+</body>	
+</html>

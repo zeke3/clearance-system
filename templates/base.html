@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">	
+	<link rel="stylesheet" type="text/css" href="{% static 'icons/flaticon.css' %}">		
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'jquery/jquery.min.js' %}"></script>
+	<title>Base Doc</title>
+</head>
+<body>
+	<div class="cont">
+		<div class="side-bar">
+			<div class="logo">
+				<img src="{% static 'img/logo.jpeg' %}">
+			</div>
+			<div class="side-nav">
+				{% block side-nav%} 
+				{% endblock %}
+			</div>
+		</div>
+		<div class="cont-col">
+			<div class="nav-cont">
+				<div class="nav-center">
+					<a href="#">Home</a>
+					<a href="#">About</a>
+					<a href="#">Profile</a>
+					<a href="{% url 'accounts:logout-student' %}">Logout</a>
+				</div>
+			</div>
+			<div class="content-cont">
+				{% block content%}
+				{% endblock %}
+		</div>
+	</div>
+</body>
+</html>
