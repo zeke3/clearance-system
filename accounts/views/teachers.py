@@ -21,12 +21,12 @@ class TeacherSignupView(CreateView):
 	def form_valid(self, form):
 		user = form.save()
 		login(self.request, user)
-		return redirect('accounts:home')
+		return redirect('accounts:teacher-login')
 		
 
-@login_required
-def home_view(request):
-	return render(request,'accounts/home.html',{})
+# @login_required
+# def home_view(request):
+# 	return render(request,'accounts/home.html',{})
 
 
 def login_view(request):
@@ -38,7 +38,7 @@ def login_view(request):
 			user = authenticate(request, username=username, password=password)
 			if user is not None:
 				login(request, user)
-				return redirect('accounts:home')
+				return redirect('departments:upload')
 			else:
 				print("No user found")
 	return render(request,'accounts/login.html',{"form":form})			

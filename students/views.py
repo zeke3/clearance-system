@@ -2,16 +2,21 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from .forms import ProfileUpdateForm, UserUpdateForm
 from django.contrib import messages
+from .decorators import student_required
 
 
 
 @login_required
+@student_required
 def HomeView(request):
+	user = request.user
+	print(user)
 	template_name = 'students/home.html'
 	return render(request, template_name)
 
 
 @login_required
+@student_required
 def ProfileUpdate(request):
 	if request.method == "POST":
 		u_form = UserUpdateForm(request.POST, instance=request.user)

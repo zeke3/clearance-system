@@ -5,7 +5,7 @@ from accounts.views import students, teachers
 app_name = 'accounts'
 
 urlpatterns = [
-	path('home/', teachers.home_view, name='home'),
+	# path('home/', teachers.home_view, name='home'),
 	path('login/student/', students.login_view, name='student-login'),
 	path('login/teacher/', teachers.login_view, name='teacher-login'),
 	path('logout/teacher/', teachers.logout_view, name='logout-teacher'),

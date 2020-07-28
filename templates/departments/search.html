@@ -14,15 +14,15 @@
 		{% endif %}
 	</div>
 {% endblock %}
-{% block content%}
-	<form method="POST">
-		{% csrf_token %}
-		<fieldset class="form-group">
-			<legend class="border-bottom mb-4">Add Student</legend>
-			{{form | crispy}}
-		</fieldset>
-		<div class="form-group">
-			<button class="btn-outline-info btn-lg" type="submit">Add</button>
-		</div>
-	</form>
+
+{% block content %}
+<div class="">
+ 	<div class="col">
+    	<i id="search-icon" class="flaticon-magnifying-glass"></i>
+    	<input id="user-input" placeholder="Search">
+  	</div>
+  	<div id="replaceable-content" class="col">
+  	  	{% include 'departments/student-results.html' %}
+  	</div>  	
+</div>  	
 {% endblock %}

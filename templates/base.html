@@ -26,7 +26,11 @@
 					<a href="#">Home</a>
 					<a href="#">About</a>
 					<a href="#">Profile</a>
+					{% if user.is_student %}
 					<a href="{% url 'accounts:logout-student' %}">Logout</a>
+					{% else %}
+					<a href="{% url 'accounts:logout-teacher' %}">Logout</a>
+				{% endif %}					
 				</div>
 			</div>
 			<div class="content-cont">
@@ -34,5 +38,8 @@
 				{% endblock %}
 		</div>
 	</div>
+	{% block footer %}
+		<script type="text/javascript" src="{% static 'js/main.js' %}"></script>	
+	{% endblock %}
 </body>
 </html>

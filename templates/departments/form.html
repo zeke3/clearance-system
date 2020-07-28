@@ -5,8 +5,14 @@
 
 {% block side-nav %}
 	<div class="teacher-sidebar">
-		<a href="{% url 'departments:add-form' %}">Add Student<i class="flaticon-follow" style="margin-left: 90px;"></i></a>
-		<a href="{% url 'students:student-update' %}">Search Student<i class="flaticon-magnifying-glass" style="margin-left: 70px;"></i></a>	</div>
+		{% if user.departmentofficer.department_name == 'Library' %}
+		<a href="{% url 'departments:add-form-library' slug=user.departmentofficer.department_name %}">Add Student<i class="flaticon-follow" style="margin-left: 90px;"></i></a>
+		<a href="{% url 'departments:library-search' %}">Search Student<i class="flaticon-magnifying-glass" style="margin-left: 70px;"></i></a>		
+		{%else%}
+		<a href="{% url 'departments:add-form-workshop' slug=user.departmentofficer.department_name %}">Add Student<i class="flaticon-follow" style="margin-left: 90px;"></i></a>
+		<a href="{% url 'departments:workshop-search' %}">Search Student<i class="flaticon-magnifying-glass" style="margin-left: 70px;"></i></a>				
+		{% endif %}
+	</div>
 {% endblock %}
 {% block content%}
 	

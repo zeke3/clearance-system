@@ -8,6 +8,7 @@ from django.utils import timezone
 
 
 
+
 class User(AbstractUser):
 	is_student = models.BooleanField(default=False)
 	is_teacher = models.BooleanField(default=False)
@@ -27,9 +28,12 @@ class Student(models.Model):
 		return f"{self.user.first_name} {self.user.last_name}"
 
 
-class Department(models.Model):
+class DepartmentOfficer(models.Model):
 	user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, primary_key=True)
 	department_name = models.CharField(max_length=100)
+
+	def __str__(self):
+		return self.department_name
 
 # class Department(models.Model):
 # 	officer_name = models.CharField(max_length=100)

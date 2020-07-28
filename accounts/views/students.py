@@ -45,9 +45,9 @@ def StudentSignupView(request, *args):
 
 			
 
-@login_required
-def home_view(request):
-	return render(request,'students/home.html')
+# @login_required
+# def home_view(request):
+# 	return render(request,'students/home.html')
 
 
 def login_view(request):
@@ -66,4 +66,4 @@ def login_view(request):
 
 def logout_view(request):
 	logout(request)
-	return redirect('acconts:student-login')	
+	return redirect('accounts:student-login')	

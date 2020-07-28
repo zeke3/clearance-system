@@ -18,7 +18,7 @@
 			<img src="{% static 'img/logo.jpeg' %}">
 		</div>
 		<div class="nav-center-special">
-			<a href="{% url 'students:student-login' %}">Login</a>
+			<a href="{% url 'accounts:student-login' %}">Login</a>
 		</div>
 	</div>
 	<div class="content-cont-special">
@@ -26,6 +26,7 @@
 			{% csrf_token %}
 			<fieldset class="form-group">
 				<legend class="border-bottom mb-4">Sign up</legend>
+				{{form | crispy}}
 				{{signup_form | crispy}}
 				{{profile_form | crispy}}
 			</fieldset>

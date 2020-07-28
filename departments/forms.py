@@ -1,6 +1,15 @@
 from django import forms
+from .models import *
+
+class LibraryForm(forms.ModelForm):
+
+	class Meta:
+		model = Library
+		fields = ['student','item']
 
 
-class UploadForm(forms.Form):
-	student = forms.CharField()
-	item = forms.CharField()
+class WorkshopForm(forms.ModelForm):
+
+	class Meta:
+		model = Workshop
+		fields = ['student', 'item']
