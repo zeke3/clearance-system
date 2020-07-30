@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block side-nav %}
+	<div class="student-sidebar">
+		<a href="{% url 'students:student-update' %}">Profile<i class="flaticon-user" style="margin-left:100px;"></i></a>
+		<a href="{% url 'students:student-update' %}">Items<i class="flaticon-inventory" style="margin-left:100px;"></i></a>
+	</div>
+{% endblock %}
+
+
+{% block content %}
+	<a href="{% url 'students:library-items' %}">Library<a>
+	<a href="{% url 'students:workshop-items' %}">Workshop<a>	
+{% endblock %}

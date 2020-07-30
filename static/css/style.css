@@ -238,3 +238,7 @@ body {
     animation-timing-function:ease-in-out;
     animation-direction: alternate;
   }
+
+.btn img{
+  color:red;
+}

@@ -1,0 +1,30 @@
+{% if students %}			
+	<table class="table table-striped">
+		  <thead>
+		    <tr>
+		      <th scope="col">Name</th>
+		      <th scope="col">Item</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  	{% for student in students %}
+		    <tr>
+		      <td>{{student}}</td>
+		      <td>{{student.item}}</td>
+		      <td>
+		      	<form action="{% url 'departments:workshop-search' slug=student.student_id item=student.item %}" method="GET">   	
+		      		{% csrf_token %}
+			      	<div class="form-group">
+						<button class="btn" type="submit">
+							<img class='bp-icon' src="/static/img/bootstrap-icons/trash-fill.svg" alt="trash" width="23" height="23">
+						</button>
+					</div>
+				</form>
+		      </td>
+		    </tr>
+		    {% endfor %}
+		  </tbody>
+	</table>		
+{% else %}
+	<p style="margin:10px;">No student found</p>
+{% endif %}

@@ -7,10 +7,10 @@
 	<div class="teacher-sidebar">
 		{% if user.departmentofficer.department_name == 'Library' %}
 		<a href="{% url 'departments:add-form-library' slug=user.departmentofficer.department_name %}">Add Student<i class="flaticon-follow" style="margin-left: 90px;"></i></a>
-		<a href="{% url 'departments:library-search' %}">Search Student<i class="flaticon-magnifying-glass" style="margin-left: 70px;"></i></a>		
+		<a href="{% url 'departments:library-search' slug=None item=None %}">Search Student<i class="flaticon-magnifying-glass" style="margin-left: 70px;"></i></a>		
 		{%else%}
 		<a href="{% url 'departments:add-form-workshop' slug=user.departmentofficer.department_name %}">Add Student<i class="flaticon-follow" style="margin-left: 90px;"></i></a>
-		<a href="{% url 'departments:workshop-search' %}">Search Student<i class="flaticon-magnifying-glass" style="margin-left: 70px;"></i></a>				
+		<a href="{% url 'departments:workshop-search' slug=None item=None %}">Search Student<i class="flaticon-magnifying-glass" style="margin-left: 70px;"></i></a>				
 		{% endif %}
 	</div>
 {% endblock %}
@@ -22,7 +22,11 @@
     	<input id="user-input" placeholder="Search">
   	</div>
   	<div id="replaceable-content" class="col">
-  	  	{% include 'departments/student-results.html' %}
+  		{% if user.departmentofficer.department_name == 'Library' %}
+  	  		{% include 'departments/library-results.html' %}
+  	  	{% else %}
+  	  		{% include 'departments/workshop-results.html' %}
+  	  	{% endif %}
   	</div>  	
 </div>  	
 {% endblock %}

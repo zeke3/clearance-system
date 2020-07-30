@@ -50,7 +50,10 @@ def WorkshopFormView(request,slug):
 	
 
 @library_officer_required
-def library_search(request):
+def library_search(request,slug, item):
+	user = request.user.departmentofficer.department_name
+	print(user)
+
 	ctx = {}
 	url_parameter = request.GET.get('q')
 	if url_parameter:
@@ -58,11 +61,21 @@ def library_search(request):
 	else:
 		students = ''
 
+
+	if slug == 'None' and item == 'None' :
+		print('pass')
+		pass
+	else:	
+		if request.method == 'GET':
+			print(slug)
+			student = Library.objects.filter(Q(student_id=slug) and Q(item=item))
+			student.delete()
+
 	ctx['students'] = students
 
 	if request.is_ajax():
 		html = render_to_string(
-			template_name='departments/student-results.html',
+			template_name='departments/library-results.html',
 			context={'students':students}
 		)
 
@@ -74,7 +87,10 @@ def library_search(request):
 
 
 @workshop_officer_required
-def workshop_search(request):
+def workshop_search(request, slug, item):
+	user = request.user.departmentofficer.department_name
+	print(user)
+
 	ctx = {}
 	url_parameter = request.GET.get('q')
 	if url_parameter:
@@ -82,11 +98,20 @@ def workshop_search(request):
 	else:
 		students = ''
 
+	if slug is None and item is None:
+		print('pass')
+		pass
+	else:	
+		if request.method == 'GET':
+			print(slug)
+			student = Workshop.objects.filter(Q(student_id=slug) and Q(item=item))
+			student.delete()
+
 	ctx['students'] = students
 
 	if request.is_ajax():
 		html = render_to_string(
-			template_name='departments/student-results.html',
+			template_name='departments/workshop-results.html',
 			context={'students':students}
 		)
 

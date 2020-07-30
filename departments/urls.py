@@ -7,6 +7,6 @@ urlpatterns = [
 path('', UploadView, name='upload'),
 path('1/<str:slug>/', LibraryFormView, name='add-form-library'),
 path('2/<str:slug>/', WorkshopFormView, name='add-form-workshop'),
-path('library/', library_search, name='library-search'),
-path('workshop/', workshop_search, name='workshop-search'),
+path('library/<str:slug>/<str:item>/', library_search, name='library-search'),
+path('workshop/<str:slug>/<str:item>/', workshop_search, name='workshop-search'),
 ]
