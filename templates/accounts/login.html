@@ -17,9 +17,15 @@
 		<div class="logo-special">
 			<img src="{% static 'img/logo.jpeg' %}">
 		</div>
+		{% if request.resolver_match.route == 'accounts/login/teacher/' %}
+		<div class="nav-center-special">
+			<a href="{% url 'accounts:teacher_signup' %}">Signup</a>
+		</div>
+		{% else %}
 		<div class="nav-center-special">
 			<a href="{% url 'accounts:student_signup' %}">Signup</a>
 		</div>
+		{% endif %}		
 	</div>
 	<div class="content-cont-special">
 		<form method="POST">

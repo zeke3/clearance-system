@@ -29,8 +29,22 @@ class Student(models.Model):
 
 
 class DepartmentOfficer(models.Model):
+
+	CHOICES = (
+		('Library','Library'),
+		('Workshop','Workshop'),
+		('MustSo','MustSo'),
+		('Laboratories','Laboratories'),
+		('Head Of Department','Head Of Department'),
+		('Catering Office','Catering Office'),
+		('Sports and Games','Sports and Games'),
+		('Accomodation','Accomodation'),
+		('Accounts Office','Accounts Office')
+	)
+
+
 	user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, primary_key=True)
-	department_name = models.CharField(max_length=100)
+	department_name = models.CharField(max_length=100, choices=CHOICES)
 
 	def __str__(self):
 		return self.department_name

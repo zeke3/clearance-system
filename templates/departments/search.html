@@ -4,15 +4,38 @@
 
 
 {% block side-nav %}
-	<div class="teacher-sidebar">
-		{% if user.departmentofficer.department_name == 'Library' %}
-		<a href="{% url 'departments:add-form-library' slug=user.departmentofficer.department_name %}">Add Student<i class="flaticon-follow" style="margin-left: 90px;"></i></a>
-		<a href="{% url 'departments:library-search' slug=None item=None %}">Search Student<i class="flaticon-magnifying-glass" style="margin-left: 70px;"></i></a>		
-		{%else%}
-		<a href="{% url 'departments:add-form-workshop' slug=user.departmentofficer.department_name %}">Add Student<i class="flaticon-follow" style="margin-left: 90px;"></i></a>
-		<a href="{% url 'departments:workshop-search' slug=None item=None %}">Search Student<i class="flaticon-magnifying-glass" style="margin-left: 70px;"></i></a>				
-		{% endif %}
-	</div>
+  <div class="teacher-sidebar">
+    {% if user.departmentofficer.department_name == 'Library' %}
+    <a href="{% url 'departments:add-form-library' slug=user.departmentofficer.department_name %}">Add Student<i class="flaticon-follow" style="margin-left: 90px;"></i></a>
+    <a href="{% url 'departments:library-search' slug=None item=None %}">Search Student<i class="flaticon-magnifying-glass" style="margin-left: 70px;"></i></a>   
+    {%elif user.departmentofficer.department_name == 'Workshop'%}
+    <a href="{% url 'departments:add-form-workshop' slug=user.departmentofficer.department_name %}">Add Student<i class="flaticon-follow" style="margin-left: 90px;"></i></a>
+    <a href="{% url 'departments:workshop-search' slug=None item=None %}">Search Student<i class="flaticon-magnifying-glass" style="margin-left: 70px;"></i></a>
+    {%elif user.departmentofficer.department_name == 'MustSo'%}
+    <a href="{% url 'departments:add-form-mustso' slug=user.departmentofficer.department_name %}">Add Student<i class="flaticon-follow" style="margin-left: 90px;"></i></a>
+    <a href="{% url 'departments:mustso-search' slug=None item=None %}">Search Student<i class="flaticon-magnifying-glass" style="margin-left: 70px;"></i></a>
+    {%elif user.departmentofficer.department_name == 'Laboratories'%}
+    <a href="{% url 'departments:add-form-laboratories' slug=user.departmentofficer.department_name %}">Add Student<i class="flaticon-follow" style="margin-left: 90px;"></i></a>
+    <a href="{% url 'departments:laboratories-search' slug=None item=None %}">Search Student<i class="flaticon-magnifying-glass" style="margin-left: 70px;"></i></a>
+    {%elif user.departmentofficer.department_name == 'Head Of Department'%}
+    <a href="{% url 'departments:add-form-hod' slug=user.departmentofficer.department_name %}">Add Student<i class="flaticon-follow" style="margin-left: 90px;"></i></a>
+    <a href="{% url 'departments:hod-search' slug=None item=None %}">Search Student<i class="flaticon-magnifying-glass" style="margin-left: 70px;"></i></a>
+    {%elif user.departmentofficer.department_name == 'Catering Office'%}
+    <a href="{% url 'departments:add-form-catering-office' slug=user.departmentofficer.department_name %}">Add Student<i class="flaticon-follow" style="margin-left: 90px;"></i></a>
+    <a href="{% url 'departments:catering-office-search' slug=None item=None %}">Search Student<i class="flaticon-magnifying-glass" style="margin-left: 70px;"></i></a>
+    {%elif user.departmentofficer.department_name == 'Sports and Games'%}
+    <a href="{% url 'departments:add-form-sports-games' slug=user.departmentofficer.department_name %}">Add Student<i class="flaticon-follow" style="margin-left: 90px;"></i></a>
+    <a href="{% url 'departments:sports-games-search' slug=None item=None %}">Search Student<i class="flaticon-magnifying-glass" style="margin-left: 70px;"></i></a>                          
+    {%elif user.departmentofficer.department_name == 'Accomodation'%}
+    <a href="{% url 'departments:add-form-accomodation' slug=user.departmentofficer.department_name %}">Add Student<i class="flaticon-follow" style="margin-left: 90px;"></i></a>
+    <a href="{% url 'departments:accomodation-search' slug=None item=None %}">Search Student<i class="flaticon-magnifying-glass" style="margin-left: 70px;"></i></a>
+    {%elif user.departmentofficer.department_name == 'Accounts Office'%}
+    <a href="{% url 'departments:add-form-accounts-office' slug=user.departmentofficer.department_name %}">Add Student<i class="flaticon-follow" style="margin-left: 90px;"></i></a>
+    <a href="{% url 'departments:accounts-office-search' slug=None item=None %}">Search Student<i class="flaticon-magnifying-glass" style="margin-left: 70px;"></i></a>
+    {%else%}
+      <h2>Unauthorized user</h2>        
+    {% endif %}
+  </div>
 {% endblock %}
 
 {% block content %}
@@ -24,9 +47,25 @@
   	<div id="replaceable-content" class="col">
   		{% if user.departmentofficer.department_name == 'Library' %}
   	  		{% include 'departments/library-results.html' %}
-  	  	{% else %}
+  	  {%elif user.departmentofficer.department_name == 'Workshop'%}
   	  		{% include 'departments/workshop-results.html' %}
-  	  	{% endif %}
+      {%elif user.departmentofficer.department_name == 'MustSo'%}    
+          {% include 'departments/mustso-results.html' %}
+      {%elif user.departmentofficer.department_name == 'Laboratories'%}
+          {% include 'departments/laboratories-results.html' %}
+      {%elif user.departmentofficer.department_name == 'Head Of Department'%}
+          {% include 'departments/hod-results.html' %}
+      {%elif user.departmentofficer.department_name == 'Catering Office'%}
+          {% include 'departments/catering-results.html' %}
+      {%elif user.departmentofficer.department_name == 'Sports and Games'%} 
+          {% include 'departments/sports-games-results.html' %}
+      {%elif user.departmentofficer.department_name == 'Accomodation'%}
+          {% include 'departments/accomodation-results.html' %}
+      {%elif user.departmentofficer.department_name == 'Accounts Office'%} 
+          {% include 'departments/accounts-office-results.html' %}
+      {% else %}
+          <h1>Staff required</h1>        
+  	  {% endif %}
   	</div>  	
 </div>  	
 {% endblock %}

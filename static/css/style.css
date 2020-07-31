@@ -84,6 +84,7 @@ body {
   height: 50px;
   display: inline-flex;
   justify-content: flex-end;
+  z-index:1;
 }
 
 .nav-cont-special {
@@ -126,12 +127,12 @@ body {
 
 
 .nav-center {
-  /*border: 1px solid cyan;*/
+  /*border: 1px solid black;*/
   height: 40px;
   display: flex;
   justify-content: space-around;
   margin-right: 10px;
-  width: 25%;
+  width: 100%;
   padding-top: 5px;
 }
 
@@ -241,4 +242,9 @@ body {
 
 .btn img{
   color:red;
+}
+
+#t-item a{
+  text-decoration: none;
+  color: black;
 }

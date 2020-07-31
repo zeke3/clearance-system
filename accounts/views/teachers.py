@@ -14,14 +14,18 @@ class TeacherSignupView(CreateView):
 	form_class = TeacherSignupForm
 	template_name = 'accounts/signup.html'
 
+
 	def get_context_data(self, **kwargs):
 		kwargs['user_type'] = 'teacher'
+		# print(self.request.resolver_match.route)
 		return super().get_context_data(**kwargs)
+
 
 	def form_valid(self, form):
 		user = form.save()
 		login(self.request, user)
 		return redirect('accounts:teacher-login')
+
 		
 
 # @login_required
@@ -30,6 +34,8 @@ class TeacherSignupView(CreateView):
 
 
 def login_view(request):
+	# print(request.__dict__)
+	# print(request.resolver_match.route)
 	form = LoginForm(request.POST or None)
 	if request.method == 'POST':
 		if form.is_valid():	

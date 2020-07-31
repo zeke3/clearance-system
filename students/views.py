@@ -41,6 +41,7 @@ def ProfileUpdate(request):
 	return render(request, template_name, context)
 
 
+@student_required
 def items_urls(request):
 	template_name = 'students/items-urls.html'
 	return render(request, template_name)	
@@ -48,22 +49,126 @@ def items_urls(request):
 
 @student_required	
 def library_items(request):
+	items =[]
 	user = request.user
-	# student = Library.objects.filter(student=user)
-	# if student:
-		# print(student)
+	# print(user.id)
+	students = Library.objects.all().filter(student_id =user.id)
+	# print(students)
+	for student in students:
+		items.append(student.item)
+	context = { 'items': items }	
 	template_name = 'students/items-list.html'
-	return render(request, template_name)
+	return render(request, template_name, context)
 
 
 @student_required	
 def workshop_items(request):
+	items =[]
 	user = request.user
-	student = Workshop.objects.filter(student=user)
-	if student:
-		print(student)
+	# print(user.id)
+	students = Workshop.objects.all().filter(student_id =user.id)
+	# print(students)
+	for student in students:
+		items.append(student.item)
+	context = { 'items': items }	
 	template_name = 'students/items-list.html'
-	return render(request, template_name)
+	return render(request, template_name, context)
 
 
+@student_required	
+def mustso_items(request):
+	items =[]
+	user = request.user
+	# print(user.id)
+	students = MustSo.objects.all().filter(student_id =user.id)
+	# print(students)
+	for student in students:
+		items.append(student.item)
+	context = { 'items': items }	
+	template_name = 'students/items-list.html'
+	return render(request, template_name, context)
+
+
+@student_required	
+def laboratories_items(request):
+	items =[]
+	user = request.user
+	# print(user.id)
+	students = Laboratories.objects.all().filter(student_id =user.id)
+	# print(students)
+	for student in students:
+		items.append(student.item)
+	context = { 'items': items }	
+	template_name = 'students/items-list.html'
+	return render(request, template_name, context)
+
+
+@student_required	
+def hod_items(request):
+	items =[]
+	user = request.user
+	# print(user.id)
+	students = HeadOfDepartment.objects.all().filter(student_id =user.id)
+	# print(students)
+	for student in students:
+		items.append(student.item)
+	context = { 'items': items }	
+	template_name = 'students/items-list.html'
+	return render(request, template_name, context)
+
+
+@student_required	
+def catering_office_items(request):
+	items =[]
+	user = request.user
+	# print(user.id)
+	students = CateringOffice.objects.all().filter(student_id =user.id)
+	# print(students)
+	for student in students:
+		items.append(student.item)
+	context = { 'items': items }	
+	template_name = 'students/items-list.html'
+	return render(request, template_name, context)
+
+
+@student_required	
+def sports_games_items(request):
+	items =[]
+	user = request.user
+	# print(user.id)
+	students = SportsGames.objects.all().filter(student_id =user.id)
+	# print(students)
+	for student in students:
+		items.append(student.item)
+	context = { 'items': items }	
+	template_name = 'students/items-list.html'
+	return render(request, template_name, context)
+
+
+@student_required	
+def accomodation_items(request):
+	items =[]
+	user = request.user
+	# print(user.id)
+	students = Accomodation.objects.all().filter(student_id =user.id)
+	# print(students)
+	for student in students:
+		items.append(student.item)
+	context = { 'items': items }	
+	template_name = 'students/items-list.html'
+	return render(request, template_name, context)
+
+
+@student_required	
+def accounts_office_items(request):
+	items =[]
+	user = request.user
+	# print(user.id)
+	students = AccountsOffice.objects.all().filter(student_id =user.id)
+	# print(students)
+	for student in students:
+		items.append(student.item)
+	context = { 'items': items }	
+	template_name = 'students/items-list.html'
+	return render(request, template_name, context)
 	

@@ -1,7 +1,7 @@
 const user_input = $("#user-input")
 const search_icon = $('#search-icon')
 const artists_div = $('#replaceable-content')
-const endpoint = '/departments/library/<str:slug>/<str:item>/' | '/departments/workshop/<str:slug>/<str:item>/'
+const endpoint = '/departments/library/<str:slug>/<str:item>/' | '/departments/workshop/<str:slug>/<str:item>/' | 'departments/mustso/<str:slug>/<str:item>/' | 'departments/laboratories/<str:slug>/<str:item>/' | 'departments/head-of-department/<str:slug>/<str:item>/' | 'departments/catering-office/<str:slug>/<str:item>/' | 'departments/sports-games/<str:slug>/<str:item>/' | 'departments/accomodation/<str:slug>/<str:item>/' | 'departments/accounts-office/<str:slug>/<str:item>/'  
 const delay_by_in_ms = 700
 let scheduled_function = false
 

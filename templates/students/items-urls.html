@@ -5,12 +5,47 @@
 {% block side-nav %}
 	<div class="student-sidebar">
 		<a href="{% url 'students:student-update' %}">Profile<i class="flaticon-user" style="margin-left:100px;"></i></a>
-		<a href="{% url 'students:student-update' %}">Items<i class="flaticon-inventory" style="margin-left:100px;"></i></a>
+		<a href="{% url 'students:items-urls' %}">Items<i class="flaticon-inventory" style="margin-left:100px;"></i></a>
 	</div>
 {% endblock %}
 
 
 {% block content %}
-	<a href="{% url 'students:library-items' %}">Library<a>
-	<a href="{% url 'students:workshop-items' %}">Workshop<a>	
+	<table class="table ">
+		  <thead>
+		    <tr>
+		      <th scope="col">Departments</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+				<tr>
+					<td id="t-item"><a href="{% url 'students:library-items' %}">Library<a></td>
+				</tr>
+				<tr>
+					<td id="t-item"><a href="{% url 'students:workshop-items' %}">Workshop<a></td>
+				</tr>
+				<tr>
+					<td id="t-item"><a href="{% url 'students:mustso-items' %}">MustSo<a></td>
+				</tr>
+				<tr>
+					<td id="t-item"><a href="{% url 'students:laboratories-items' %}">Laboratories<a></td>
+				</tr>
+				<tr>
+					<td id="t-item"><a href="{% url 'students:hod-items' %}">Head Of Deapartment<a></td>
+				</tr>
+				<tr>
+					<td id="t-item"><a href="{% url 'students:catering-office-items' %}">Catering<a></td>
+				</tr>
+				<tr>
+					<td id="t-item"><a href="{% url 'students:sports-games-items' %}">Sports and Games<a></td>
+				</tr>
+				<tr>
+					<td id="t-item"><a href="{% url 'students:accomodation-items' %}">Accomodation<a></td>
+				</tr>
+				<tr>
+					<td id="t-item"><a href="{% url 'students:accounts-office-items' %}">Accounts Office<a></td>
+				</tr>										
+		  </tbody>
+	</table>	
 {% endblock %}
+

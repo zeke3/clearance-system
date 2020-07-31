@@ -5,6 +5,30 @@
 {% block side-nav %}
 	<div class="student-sidebar">
 		<a href="{% url 'students:student-update' %}">Profile<i class="flaticon-user" style="margin-left:100px;"></i></a>
-		<a href="{% url 'students:student-update' %}">Items<i class="flaticon-inventory" style="margin-left:100px;"></i></a>
+		<a href="{% url 'students:items-urls' %}">Items<i class="flaticon-inventory" style="margin-left:100px;"></i></a>
 	</div>
 {% endblock %}
+
+{% block content %}
+	<table class="table ">
+		  <thead>
+		    <tr>
+		      <th scope="col">Items</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  		{% if items %}
+					{% for item in items %}
+					<tr>
+						<td>{{item}}</td>
+					</tr>
+					{% endfor %}
+				{% else %}
+					<tr>
+						<td style="color:grey;">0 items</td>	
+					</tr>
+				{% endif %}	
+		  </tbody>
+	</table>		
+{% endblock %}
+

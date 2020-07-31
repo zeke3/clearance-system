@@ -4,7 +4,6 @@
 		    <tr>
 		      <th scope="col">Name</th>
 		      <th scope="col">Item</th>
-		      <!-- <th scope="col">Date</th> -->
 		    </tr>
 		  </thead>
 		  <tbody>
@@ -12,9 +11,8 @@
 		    <tr>
 		      <td>{{student}}</td>
 		      <td>{{student.item}}</td>
-		      <!-- <td>{{student.lent_date}}</td> -->
 		      <td>
-		      	<form action="{% url 'departments:library-search' slug=student.student_id item=student.item %}" method="GET">   	
+		      	<form action="{% url 'departments:sports-games-search' slug=student.student_id item=student.item %}" method="GET">   	
 		      		{% csrf_token %}
 			      	<div class="form-group">
 						<button class="btn" type="submit">
