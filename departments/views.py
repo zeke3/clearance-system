@@ -8,6 +8,7 @@ from django.db.models import Q
 from .models import *
 from django.template.loader import render_to_string
 from django.http import JsonResponse
+from django.contrib import messages
 
 
 # @login_required
@@ -19,10 +20,14 @@ def UploadView(request):
 ################### Form Views ##########################
 @library_officer_required
 def LibraryFormView(request,slug):
-	if request.method == 'POST':	
+	if request.method == 'POST':
 		form = LibraryForm(request.POST or None)
 		if form.is_valid():
-			form.save()
+			student = form.cleaned_data.get('student')
+			if student.request:
+				messages.info(request, f'This student is not permitted in lending an item')
+			else:	
+				form.save()
 			return redirect('departments:add-form-library',slug)
 	else:
 		form = LibraryForm()
@@ -34,14 +39,18 @@ def LibraryFormView(request,slug):
 
 @workshop_officer_required
 def WorkshopFormView(request,slug):
-	if request.method == 'POST':	
+	if request.method == 'POST':
 		form = WorkshopForm(request.POST or None)
 		if form.is_valid():
-			form.save()
+			student = form.cleaned_data.get('student')
+			if student.request:
+				messages.info(request, f'This student is not permitted in lending an item')
+			else:	
+				form.save()
 			return redirect('departments:add-form-workshop',slug)
 	else:
 		form = WorkshopForm()
-			
+
 	context = { 'form': form }
 	template_name = 'departments/upload.html'
 	return render(request,template_name, context)
@@ -49,14 +58,18 @@ def WorkshopFormView(request,slug):
 
 @mustso_officer_required
 def MustSoFormView(request,slug):
-	if request.method == 'POST':	
+	if request.method == 'POST':
 		form = MustSoForm(request.POST or None)
 		if form.is_valid():
-			form.save()
+			student = form.cleaned_data.get('student')
+			if student.request:
+				messages.info(request, f'This student is not permitted in lending an item')
+			else:	
+				form.save()
 			return redirect('departments:add-form-mustso',slug)
 	else:
 		form = MustSoForm()
-			
+
 	context = { 'form': form }
 	template_name = 'departments/upload.html'
 	return render(request,template_name, context)
@@ -64,29 +77,37 @@ def MustSoFormView(request,slug):
 
 @laboratories_officer_required
 def LaboratoriesFormView(request,slug):
-	if request.method == 'POST':	
+	if request.method == 'POST':
 		form = LaboratoriesForm(request.POST or None)
 		if form.is_valid():
-			form.save()
+			student = form.cleaned_data.get('student')
+			if student.request:
+				messages.info(request, f'This student is not permitted in lending an item')
+			else:	
+				form.save()
 			return redirect('departments:add-form-laboratories',slug)
 	else:
 		form = LaboratoriesForm()
-			
+
 	context = { 'form': form }
 	template_name = 'departments/upload.html'
-	return render(request,template_name, context)	
+	return render(request,template_name, context)
 
 
 @hod_officer_required
 def HeadOfDepartmentFormView(request,slug):
-	if request.method == 'POST':	
+	if request.method == 'POST':
 		form = HeadOfDepartmentForm(request.POST or None)
 		if form.is_valid():
-			form.save()
+			student = form.cleaned_data.get('student')
+			if student.request:
+				messages.info(request, f'This student is not permitted in lending an item')
+			else:	
+				form.save()
 			return redirect('departments:add-form-hod',slug)
 	else:
 		form = HeadOfDepartmentForm()
-			
+
 	context = { 'form': form }
 	template_name = 'departments/upload.html'
 	return render(request,template_name, context)
@@ -94,14 +115,18 @@ def HeadOfDepartmentFormView(request,slug):
 
 @catering_officer_required
 def CateringOfficeFormView(request,slug):
-	if request.method == 'POST':	
+	if request.method == 'POST':
 		form = CateringOfficeForm(request.POST or None)
 		if form.is_valid():
-			form.save()
+			student = form.cleaned_data.get('student')
+			if student.request:
+				messages.info(request, f'This student is not permitted in lending an item')
+			else:	
+				form.save()
 			return redirect('departments:add-form-catering-office',slug)
 	else:
 		form = CateringOfficeForm()
-			
+
 	context = { 'form': form }
 	template_name = 'departments/upload.html'
 	return render(request,template_name, context)
@@ -109,14 +134,18 @@ def CateringOfficeFormView(request,slug):
 
 @sports_games_officer_required
 def SportsGamesFormView(request,slug):
-	if request.method == 'POST':	
+	if request.method == 'POST':
 		form = SportsGamesForm(request.POST or None)
 		if form.is_valid():
-			form.save()
+			student = form.cleaned_data.get('student')
+			if student.request:
+				messages.info(request, f'This student is not permitted in lending an item')
+			else:	
+				form.save()
 			return redirect('departments:add-form-sports-games',slug)
 	else:
 		form = SportsGamesForm()
-			
+
 	context = { 'form': form }
 	template_name = 'departments/upload.html'
 	return render(request,template_name, context)
@@ -124,14 +153,18 @@ def SportsGamesFormView(request,slug):
 
 @accomodation_officer_required
 def AccomodationFormView(request,slug):
-	if request.method == 'POST':	
+	if request.method == 'POST':
 		form = AccomodationForm(request.POST or None)
 		if form.is_valid():
-			form.save()
+			student = form.cleaned_data.get('student')
+			if student.request:
+				messages.info(request, f'This student is not permitted in lending an item')
+			else:	
+				form.save()
 			return redirect('departments:add-form-accomodation',slug)
 	else:
 		form = AccomodationForm()
-			
+
 	context = { 'form': form }
 	template_name = 'departments/upload.html'
 	return render(request,template_name, context)
@@ -139,19 +172,23 @@ def AccomodationFormView(request,slug):
 
 @accountsoffice_officer_required
 def AccountsOfficeFormView(request,slug):
-	if request.method == 'POST':	
+	if request.method == 'POST':
 		form = AccountsOfficeForm(request.POST or None)
 		if form.is_valid():
-			form.save()
+			student = form.cleaned_data.get('student')
+			if student.request:
+				messages.info(request, f'This student is not permitted in lending an item')
+			else:	
+				form.save()
 			return redirect('departments:add-form-accounts-office',slug)
 	else:
 		form = AccountsOfficeForm()
-			
+
 	context = { 'form': form }
 	template_name = 'departments/upload.html'
-	return render(request,template_name, context)				
+	return render(request,template_name, context)
 
-	
+
 
 ################### Searching Views ######################
 @library_officer_required
@@ -162,7 +199,7 @@ def library_search(request,slug, item):
 	ctx = {}
 	url_parameter = request.GET.get('q')
 	if url_parameter:
-		students = Library.objects.filter(Q(student__user__first_name__icontains=url_parameter) | Q(student__user__last_name__icontains=url_parameter)) 
+		students = Library.objects.filter(Q(student__user__first_name__icontains=url_parameter) | Q(student__user__last_name__icontains=url_parameter))
 	else:
 		students = ''
 
@@ -170,7 +207,7 @@ def library_search(request,slug, item):
 	if slug == 'None' and item == 'None' :
 		print('pass')
 		pass
-	else:	
+	else:
 		if request.method == 'GET':
 			print(slug)
 			student = Library.objects.filter(Q(student_id=slug) and Q(item=item))
@@ -187,7 +224,7 @@ def library_search(request,slug, item):
 		data_dict = {"html_from_view": html}
 
 		return JsonResponse(data=data_dict, safe=False)
-	
+
 	return render(request,'departments/search.html',ctx)
 
 
@@ -196,14 +233,14 @@ def workshop_search(request, slug, item):
 	ctx = {}
 	url_parameter = request.GET.get('q')
 	if url_parameter:
-		students = Workshop.objects.filter(Q(student__user__first_name__icontains=url_parameter) | Q(student__user__last_name__icontains=url_parameter)) 
+		students = Workshop.objects.filter(Q(student__user__first_name__icontains=url_parameter) | Q(student__user__last_name__icontains=url_parameter))
 	else:
 		students = ''
 
 	if slug is None and item is None:
 		print('pass')
 		pass
-	else:	
+	else:
 		if request.method == 'GET':
 			print(slug)
 			student = Workshop.objects.filter(Q(student_id=slug) and Q(item=item))
@@ -220,7 +257,7 @@ def workshop_search(request, slug, item):
 		data_dict = {"html_from_view": html}
 
 		return JsonResponse(data=data_dict, safe=False)
-	
+
 	return render(request,'departments/search.html',ctx)
 
 
@@ -229,14 +266,14 @@ def mustso_search(request, slug, item):
 	ctx = {}
 	url_parameter = request.GET.get('q')
 	if url_parameter:
-		students = MustSo.objects.filter(Q(student__user__first_name__icontains=url_parameter) | Q(student__user__last_name__icontains=url_parameter)) 
+		students = MustSo.objects.filter(Q(student__user__first_name__icontains=url_parameter) | Q(student__user__last_name__icontains=url_parameter))
 	else:
 		students = ''
 
 	if slug is None and item is None:
 		print('pass')
 		pass
-	else:	
+	else:
 		if request.method == 'GET':
 			print(slug)
 			student = MustSo.objects.filter(Q(student_id=slug) and Q(item=item))
@@ -253,7 +290,7 @@ def mustso_search(request, slug, item):
 		data_dict = {"html_from_view": html}
 
 		return JsonResponse(data=data_dict, safe=False)
-	
+
 	return render(request,'departments/search.html',ctx)
 
 
@@ -262,14 +299,14 @@ def laboratories_search(request, slug, item):
 	ctx = {}
 	url_parameter = request.GET.get('q')
 	if url_parameter:
-		students = Laboratories.objects.filter(Q(student__user__first_name__icontains=url_parameter) | Q(student__user__last_name__icontains=url_parameter)) 
+		students = Laboratories.objects.filter(Q(student__user__first_name__icontains=url_parameter) | Q(student__user__last_name__icontains=url_parameter))
 	else:
 		students = ''
 
 	if slug is None and item is None:
 		print('pass')
 		pass
-	else:	
+	else:
 		if request.method == 'GET':
 			print(slug)
 			student = Laboratories.objects.filter(Q(student_id=slug) and Q(item=item))
@@ -286,7 +323,7 @@ def laboratories_search(request, slug, item):
 		data_dict = {"html_from_view": html}
 
 		return JsonResponse(data=data_dict, safe=False)
-	
+
 	return render(request,'departments/search.html',ctx)
 
 
@@ -296,14 +333,14 @@ def hod_search(request, slug, item):
 	ctx = {}
 	url_parameter = request.GET.get('q')
 	if url_parameter:
-		students = HeadOfDepartment.objects.filter(Q(student__user__first_name__icontains=url_parameter) | Q(student__user__last_name__icontains=url_parameter)) 
+		students = HeadOfDepartment.objects.filter(Q(student__user__first_name__icontains=url_parameter) | Q(student__user__last_name__icontains=url_parameter))
 	else:
 		students = ''
 
 	if slug is None and item is None:
 		print('pass')
 		pass
-	else:	
+	else:
 		if request.method == 'GET':
 			print(slug)
 			student = HeadOfDepartment.objects.filter(Q(student_id=slug) and Q(item=item))
@@ -320,7 +357,7 @@ def hod_search(request, slug, item):
 		data_dict = {"html_from_view": html}
 
 		return JsonResponse(data=data_dict, safe=False)
-	
+
 	return render(request,'departments/search.html',ctx)
 
 
@@ -330,14 +367,14 @@ def catering_office_search(request, slug, item):
 	ctx = {}
 	url_parameter = request.GET.get('q')
 	if url_parameter:
-		students = CateringOffice.objects.filter(Q(student__user__first_name__icontains=url_parameter) | Q(student__user__last_name__icontains=url_parameter)) 
+		students = CateringOffice.objects.filter(Q(student__user__first_name__icontains=url_parameter) | Q(student__user__last_name__icontains=url_parameter))
 	else:
 		students = ''
 
 	if slug is None and item is None:
 		print('pass')
 		pass
-	else:	
+	else:
 		if request.method == 'GET':
 			print(slug)
 			student = CateringOffice.objects.filter(Q(student_id=slug) and Q(item=item))
@@ -354,7 +391,7 @@ def catering_office_search(request, slug, item):
 		data_dict = {"html_from_view": html}
 
 		return JsonResponse(data=data_dict, safe=False)
-	
+
 	return render(request,'departments/search.html',ctx)
 
 
@@ -364,14 +401,14 @@ def sports_games_search(request, slug, item):
 	ctx = {}
 	url_parameter = request.GET.get('q')
 	if url_parameter:
-		students = SportsGames.objects.filter(Q(student__user__first_name__icontains=url_parameter) | Q(student__user__last_name__icontains=url_parameter)) 
+		students = SportsGames.objects.filter(Q(student__user__first_name__icontains=url_parameter) | Q(student__user__last_name__icontains=url_parameter))
 	else:
 		students = ''
 
 	if slug is None and item is None:
 		print('pass')
 		pass
-	else:	
+	else:
 		if request.method == 'GET':
 			print(slug)
 			student = SportsGames.objects.filter(Q(student_id=slug) and Q(item=item))
@@ -388,7 +425,7 @@ def sports_games_search(request, slug, item):
 		data_dict = {"html_from_view": html}
 
 		return JsonResponse(data=data_dict, safe=False)
-	
+
 	return render(request,'departments/search.html',ctx)
 
 
@@ -398,14 +435,14 @@ def accomodation_search(request, slug, item):
 	ctx = {}
 	url_parameter = request.GET.get('q')
 	if url_parameter:
-		students = Accomodation.objects.filter(Q(student__user__first_name__icontains=url_parameter) | Q(student__user__last_name__icontains=url_parameter)) 
+		students = Accomodation.objects.filter(Q(student__user__first_name__icontains=url_parameter) | Q(student__user__last_name__icontains=url_parameter))
 	else:
 		students = ''
 
 	if slug is None and item is None:
 		print('pass')
 		pass
-	else:	
+	else:
 		if request.method == 'GET':
 			print(slug)
 			student = Accomodation.objects.filter(Q(student_id=slug) and Q(item=item))
@@ -422,7 +459,7 @@ def accomodation_search(request, slug, item):
 		data_dict = {"html_from_view": html}
 
 		return JsonResponse(data=data_dict, safe=False)
-	
+
 	return render(request,'departments/search.html',ctx)
 
 
@@ -432,14 +469,14 @@ def accounts_office_search(request, slug, item):
 	ctx = {}
 	url_parameter = request.GET.get('q')
 	if url_parameter:
-		students = AccountsOffice.objects.filter(Q(student__user__first_name__icontains=url_parameter) | Q(student__user__last_name__icontains=url_parameter)) 
+		students = AccountsOffice.objects.filter(Q(student__user__first_name__icontains=url_parameter) | Q(student__user__last_name__icontains=url_parameter))
 	else:
 		students = ''
 
 	if slug is None and item is None:
 		print('pass')
 		pass
-	else:	
+	else:
 		if request.method == 'GET':
 			print(slug)
 			student = AccountsOffice.objects.filter(Q(student_id=slug) and Q(item=item))
@@ -456,6 +493,44 @@ def accounts_office_search(request, slug, item):
 		data_dict = {"html_from_view": html}
 
 		return JsonResponse(data=data_dict, safe=False)
-	
+
 	return render(request,'departments/search.html',ctx)
 
+
+
+#################### DOS View ##########################
+
+@dos_required
+def dos_view(request):
+	students = Student.objects.all().filter(request=True)
+	
+	if request.method == 'POST':
+		for student in students:
+			student_obj = DeanOfStudents()
+			student_obj.student = student
+			student_obj.approved = True
+			student_obj.save()
+		messages.success(request, "Students approved")
+		return redirect('departments:upload')
+	context = { 'students' : students}
+	template_name = 'departments/dos.html'
+	return render(request, template_name, context)
+
+
+#################### Accounts Officer View ###################
+@accounts_officer_required
+def accounts_officer_view(request):
+	students = DeanOfStudents.objects.order_by('student__user__first_name')
+	context = { 'students' : students }
+	template_name = 'departments/approved-students.html'
+	return render(request,template_name,context)
+
+
+
+#################### DOU VIew #############################
+@dou_required
+def dou_view(request):
+	students = DeanOfStudents.objects.order_by('student__user__first_name')
+	context = { 'students' : students }
+	template_name = 'departments/approved-students.html'
+	return render(request,template_name,context)	

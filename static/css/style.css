@@ -248,3 +248,30 @@ body {
   text-decoration: none;
   color: black;
 }
+
+
+/*@media screen and (max-width: 600px) {
+  .logo
+  {
+    margin-left: 3px;
+    margin-bottom: 20px;
+    /*float: left;*/
+    height: 50px;
+    width: 100%;      
+    border:1px solid black;
+  }
+
+  .logo img
+  {
+    /*height: 100px;*/
+    background-size: cover;
+  }
+
+  .side-bar {
+    /*display: none;*/
+  }
+
+}
+*/
+
+

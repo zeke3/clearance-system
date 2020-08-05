@@ -16,4 +16,5 @@ urlpatterns = [
 	path('items/sports-games/', sports_games_items, name='sports-games-items' ),
 	path('items/accomodation/', accomodation_items, name='accomodation-items' ),
 	path('items/accounts-office/', accounts_office_items, name='accounts-office-items' ),
+	path('request/dos', request_dos, name='request-dos')
 ]

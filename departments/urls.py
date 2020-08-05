@@ -23,4 +23,7 @@ path('catering-office/<str:slug>/<str:item>/', catering_office_search, name='cat
 path('sports-games/<str:slug>/<str:item>/', sports_games_search, name='sports-games-search'),
 path('accomodation/<str:slug>/<str:item>/', accomodation_search, name='accomodation-search'),
 path('accounts-office/<str:slug>/<str:item>/', accounts_office_search, name='accounts-office-search'),
+path('dos/', dos_view, name='dos-requests'),
+path('accounts-officer/', accounts_officer_view, name='accounts-officer'),
+path('dou/', dou_view, name='dou')
 ]

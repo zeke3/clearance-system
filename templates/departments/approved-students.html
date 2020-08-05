@@ -33,16 +33,37 @@
 		<a href="{% url 'departments:add-form-accounts-office' slug=user.departmentofficer.department_name %}">Add Student<i class="flaticon-follow" style="margin-left: 90px;"></i></a>
 		<a href="{% url 'departments:accounts-office-search' slug=None item=None %}">Search Student<i class="flaticon-magnifying-glass" style="margin-left: 70px;"></i></a>
 		{%elif user.departmentofficer.department_name == 'Dean Of Students'%}
-		<a href="{% url 'departments:dos-requests' %}">Students requests<img src="{% static 'img/bootstrap-icons/people-fill.svg' %}" alt='students' height="25" width="25" style="margin-left:18px;padding-bottom:3px;"></a>
+		<a href="{% url 'departments:dos-requests' %}">Student requests<img src="{% static 'img/bootstrap-icons/people-fill.svg' %}" alt='students' height="25" width="25" style="margin-left:18px;padding-bottom:3px;"></a>
 		{%elif user.departmentofficer.department_name == 'Accounts Officer'%}
-		<a href="{% url 'departments:accounts-officer' %}">Approved students<img src="{% static 'img/bootstrap-icons/people-fill.svg' %}" alt='students' height="25" width="25" style="margin-left:18px;padding-bottom:3px;"></a>	
+		<a href="{% url 'departments:accounts-officer' %}">Approved students<img src="{% static 'img/bootstrap-icons/people-fill.svg' %}" alt='students' height="25" width="25" style="margin-left:18px;padding-bottom:3px;"></a>
 		{%elif user.departmentofficer.department_name == 'Director Of Undergraduates'%}
-		<a href="{% url 'departments:dou' %}">Approved students<img src="{% static 'img/bootstrap-icons/people-fill.svg' %}" alt='students' height="25" width="25" style="margin-left:18px;padding-bottom:3px;"></a>	
+		<a href="{% url 'departments:dou' %}">Approved students<img src="{% static 'img/bootstrap-icons/people-fill.svg' %}" alt='students' height="25" width="25" style="margin-left:18px;padding-bottom:3px;"></a>
 		{%else%}
 			<h2>Unauthorized user</h2>				
 		{% endif %}
 	</div>
 {% endblock %}
 {% block content%}
-	
+	<table class="table ">
+		  <thead>
+		    <tr>
+		      <th scope="col">Student requests</th>
+		      <th scope="col">Course</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  		{% if students %}
+					{% for student in students %}
+					<tr>
+						<td>{{student}}</td>
+						<td>{{student.student.course_name}}</td>
+					</tr>
+					{% endfor %}
+				{% else %}
+					<tr>
+						<td style="color:grey;">0 Student requests</td>	
+					</tr>
+				{% endif %}	
+		  </tbody>
+	</table>		
 {% endblock %}

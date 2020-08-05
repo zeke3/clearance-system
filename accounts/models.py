@@ -18,6 +18,8 @@ class Student(models.Model):
 	user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, primary_key=True)
 	course_name = models.CharField(max_length=100)
 	id_number = models.CharField(max_length=15)
+	cleared = models.BooleanField(default=False)
+	request = models.BooleanField(default=False)
 
 
 	# def get_absolute_url(self):
@@ -39,7 +41,10 @@ class DepartmentOfficer(models.Model):
 		('Catering Office','Catering Office'),
 		('Sports and Games','Sports and Games'),
 		('Accomodation','Accomodation'),
-		('Accounts Office','Accounts Office')
+		('Accounts Office','Accounts Office'),
+		('Dean Of Students','Dean Of Students'),
+		('Accounts Officer','Accounts Officer'),
+		('Director Of Undergraduates','Director Of Undergraduates')
 	)
 
 

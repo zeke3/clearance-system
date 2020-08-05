@@ -34,6 +34,7 @@ def StudentSignupView(request, *args):
 			student = profile_form.save(commit=False)
 			student.user = user
 			student.save()
+			messages.success(request, f'Account created for {user.first_name}')
 			return redirect('students:student-home')
 	else:
 		signup_form = StudentSignupForm()
@@ -67,3 +68,11 @@ def login_view(request):
 def logout_view(request):
 	logout(request)
 	return redirect('accounts:student-login')	
+
+
+
+#message.debug
+#message.info
+#message.success
+#message.warning
+#message.error

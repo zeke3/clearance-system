@@ -15,5 +15,6 @@ admin.site.register(CateringOffice)
 admin.site.register(SportsGames)
 admin.site.register(Accomodation)
 admin.site.register(AccountsOffice)
+admin.site.register(DeanOfStudents)
 
 # Register your models here.

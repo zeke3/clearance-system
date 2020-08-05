@@ -138,3 +138,7 @@ AUTH_USER_MODEL = 'accounts.User'
 LOGIN_URL = 'accounts:student-login'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+
+###### d3v3l0p3d by z3k3_03 ##############

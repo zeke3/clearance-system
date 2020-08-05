@@ -14,3 +14,5 @@ from django.core.asgi import get_asgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'clearance_system.settings')
 
 application = get_asgi_application()
+
+###### d3v3l0p3d by z3k3_03 ##############

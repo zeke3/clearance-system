@@ -5,6 +5,7 @@ from django.views.generic import CreateView
 from django.contrib.auth import get_user_model
 from ..forms import TeacherSignupForm, LoginForm
 from ..models import User
+from django.contrib import messages
 
 #User = get_user_model()
 
@@ -24,6 +25,7 @@ class TeacherSignupView(CreateView):
 	def form_valid(self, form):
 		user = form.save()
 		login(self.request, user)
+		messages.success(self.request, f'Account created for {user.username}')
 		return redirect('accounts:teacher-login')
 
 		

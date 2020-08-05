@@ -121,4 +121,38 @@ def accountsoffice_officer_required(function=None, redirect_field_name=REDIRECT_
 		return actual_decorator(function)
 	return actual_decorator
 
-						
+
+def dos_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login_url='accounts:teacher-login'):
+	actual_decorator = user_passes_test(
+		lambda u: u.departmentofficer.department_name == 'Dean Of Students',
+		login_url=login_url,
+		redirect_field_name=redirect_field_name
+		)
+
+	if function:
+		return actual_decorator(function)
+	return actual_decorator	
+
+
+def accounts_officer_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login_url='accounts:teacher-login'):
+	actual_decorator = user_passes_test(
+		lambda u: u.departmentofficer.department_name == 'Accounts Officer',
+		login_url=login_url,
+		redirect_field_name=redirect_field_name
+		)
+
+	if function:
+		return actual_decorator(function)
+	return actual_decorator
+
+
+def dou_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login_url='accounts:teacher-login'):
+	actual_decorator = user_passes_test(
+		lambda u: u.departmentofficer.department_name == 'Director Of Undergraduates',
+		login_url=login_url,
+		redirect_field_name=redirect_field_name
+		)
+
+	if function:
+		return actual_decorator(function)
+	return actual_decorator						
