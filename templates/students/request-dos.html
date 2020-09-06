@@ -14,10 +14,11 @@
 	</div>
 {% endblock %}
 {% block content%}
+	<p style="font-size:20px;">Are you sure you want to send a request to DOS?</p>
 	<form method="POST">
 		{% csrf_token %}
 		<div class="form-group">
-			<button class="btn-outline-success btn-lg " type="submit">Send request</button>
+			<button class="btn-outline-success btn-lg " type="submit">Send</button>
 		</div>		
 	</form> 
 {% endblock %}
